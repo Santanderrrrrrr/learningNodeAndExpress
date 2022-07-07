@@ -1,0 +1,26 @@
+//one can have files accessible in other files by exporting them
+//claiming something for export purposes in done as follows:
+    module.exports.candy = 'liquorice'
+//when you require the export in a different file, you reach the property
+  needed by simply using dot notations.
+
+//A shorthand way of doing it is by simply stating "exports" and then attributing the 
+  value name as follows:
+    exports.candy = 'liquorice'
+
+//it's possible to export an entire directory using the exports functionality
+
+//using NPM:
+    ///once you install a package, you simply need to require the package name
+    ///to see what the package has to offer, you can use console.dir(packageName)
+       and see the interactive list of the properties of the specified havascript object.
+    ///a global package install ensures the package is available from every directory in your 
+       computer.
+    ///We set up package-json using the "npm init" command
+    ///to access globally installed packages, we use "npm link <packageName>"
+    ///once you have the package-json set up, you just need to run the "npm install"
+       command and the node modules including the ones your project are dependent on 
+       as stipulated in the package-json will be downloaded and installed.
+    ///an example is the group chat application in this file directory. It was installed simply
+       by running the 'npm install' line.
+

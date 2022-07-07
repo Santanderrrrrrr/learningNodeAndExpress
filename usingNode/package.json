@@ -1,0 +1,18 @@
+{
+  "name": "usingnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "usingNpm.js",
+  "scripts": {
+    "test": "console.log('yoooooo')"
+  },
+  "author": "Leon Omollo",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "franc": "^6.0.0",
+    "give-me-a-joke": "^0.5.1",
+    "langs": "^2.0.0"
+  },
+  "type": "module"
+}

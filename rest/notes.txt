@@ -1,0 +1,48 @@
+//REST is an architectural stsyle for distributed hypermedia systems
+
+//It's basicallt a set of guidelines for how a client + server should
+  communicate and perform CRUD operations of a given resource.
+
+//REST - Representational State Transfer
+//REST's main objective is to treat data on the server-side as resources 
+  that can be "CRUD'ed"
+//The most common way of approaching REST is in formatting the URL's and 
+  HTTP verbs in your application.
+
+//Restful applications tend to have the following pattern:
+
+    >name       path                    verb        purpose
+    ------------------------------------------------------------------------------
+     index      /comments               GET         display all comments
+     new        /comments/new           GET         form to create new comments
+     create     /comments               POST        creates new comment on server
+     show   	/comments/:id           GET         details for one specific comment
+     edit       /comments/:id/edit      GET         form to edit specific comment
+     update     /comments/:id           PATCH       updates specific comment on server
+     destroy    //comments/:id          DELETE      deletes specific item on server
+
+//express provides us with a method called redirect which keeps us from resubmitting
+  form data on refresh.
+  The method is a property of the res parameter and is a response with a status code 302 or 
+  a status code prviously defined in the response
+  The  redirect also takes the url to which the user is to be redirected on submit.
+
+//A put request tends to update an entire payload and replace it with an entirely new one/. 
+//a patchc request actually allows you to edit something. It simply takes a path parameter with
+  the semicolon as you'd do if you wanted to access req.params as well as a callback method which
+  takes req and res.
+  //In an instance where something needs to be edited, the payload is what's used to change the 
+    current state.
+  //To change the state, simply mutate the property you wish to see changed. (not advised)
+  //another thing is that hmtl forms cannot send patch requests. Only get or put requests.
+  //so you have to get a page which has a form to edit the payload and then make another request 
+    to be able to patch.
+  //And then you need to use "method-override" from express to allow you to make the type of 
+    method requests that the client cannot allow.
+  //Method-override itself is a node package and thus will need to be required.
+  //then it needs to be used as middleware passing how it will be called within the initialization parentheses.
+  //you then simply head to the html doc and set the action of the form to be what it should be
+    with a query string at the end indicating that the method should be patch/delete as follows:
+
+        form method="post" action="http://somewhere.com?_method=PATCH" 
+

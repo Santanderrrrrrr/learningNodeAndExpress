@@ -1,0 +1,59 @@
+//Express
+    //Express itself is a framework:
+        //it takes control and you pretty much only choose
+          what data is supposed to be carried within and how it's to be
+          interacted with
+    //starts up a http server to listen for requests
+    //parses incoming requests
+    //matches those requests to particular routes
+    //crafts our http response and associated content
+
+//once you have an instance of express, you need to execute express
+  and the return value, you save to a variable called app.
+//when you set up an app.use() with a callback parameter, every time a request is made,
+  the callback will run! No matter where the request is going.
+
+//app.listen(port, callback) takes the port and a callback function as parameters
+  and then goes on to listen at the specified port. The callback runs when one accesses the port.
+    //The use function will be calleds callback function takes two parameters:
+        1. req - representing the requests coming in 
+        2. res - representing the responses going out
+            >you can use res.send(<what to send>) to give feedback that is rendered onto the page as html
+            >the feedback can either be a string, object or html elements that will be rendered
+
+//Instead of responding to every single response in a monotonous manner, you can respond
+  in different manners in what is known as express routing. 
+  Routing is taking incoming requests and a path requested and matching it to some response.
+    // a path could be /cats or /dogs or /something or just '/'
+  //You should know that as long as there's an app.use() existent, it will respond to all requests.
+  //the app fucntion has the .get which takes the path and a callback that takes teh req and res parameters
+    and gives a response as an output. This allows you to set what happens when specific routes in the 
+    server are requested.
+  //If you would like to set a fallback route, the best option is to use the "*" path.
+    //This should be reserved for the final get setting as setting it before would result in all the subsequent
+      set routes not being defined.
+  
+  //Apart from just get methods, you can also make posts and puts and patches as well as delete requests to the express server
+    using the respective properties of the app instance.
+    //check console.dir(app) to see what options are available.
+  //There is what is known as request params (req.params) that allows you to pick out the extensions added to 
+    the url and use them in the making of responses:
+
+        example:    app.get('/something/:somethingElse', function(req, res){
+            const { somethingElse } = req.params; 
+            res.send(`<h1 style="color:turquoise"> In this instance, the extension is ${extension} </h1>`)
+        })
+    
+    there can be multiple params in the url as follows:
+        example:    app.get('/:firstThing/:somethingElse', function(req, res){
+            const { firstThing, somethingElse } = req.params; 
+            res.send(`<h1 style="color:turquoise"> In this instance, the extension to ${firstThing} is ${extension} </h1>`)
+        })
+
+//Query strings are the portion of the url that come after the question mark.
+  //may include information in key value pairs
+  //when you define a path without any further extension, the request object has a property called 
+    query that is composed of key-value pairs made of the query string
+  //the query string seems to be automatically constructed by the .query property from the extensions within the
+    request url.
+

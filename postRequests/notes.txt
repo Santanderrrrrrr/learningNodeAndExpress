@@ -1,0 +1,19 @@
+//making post requests does not add to the url query string
+//making post requests alters the fabric of the db.
+//the request param has a property called "req.body" which contains key-value pairs of data submitted in the request body
+  //by default the req.body is undefined and is only populated when using parsing middleware like express.json() or express.urlencoded()
+  //an example would look as follows:
+        const express = require('express')
+        const app = express()
+
+        app.use(express.json()) //for parsing application/json
+        app.use(express.urlencoded({extended: true})) //for parsing request bodies as url encoded data
+                                                      //the app.use, as earlier mentioned runs on all express
+                                                        requests, regardless of whether they're post/get or otherwise
+        
+        app.post('/profile', function(req, res, next) {
+            console.log(req.body)
+            res.json(req.body)
+        })
+  //As you'd notice above, the app.post function takes the url as well as three parameters to a callback
+  //

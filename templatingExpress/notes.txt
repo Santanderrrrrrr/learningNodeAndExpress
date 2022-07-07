@@ -1,0 +1,42 @@
+//Templates allow us to define preset patterns for a ewebpage.
+//We could for example define a single "search" template that displays
+  the results for a given search term
+//We may not know how many or what at all are the results ahead of time.
+  //a webpage is therefore created on the fly.
+
+//the express app has a set function that accepts a key and its 
+  corresponding value.
+  //this is used to set ejs as the html templating engine.
+  //The key-value pair is:
+    app.set('view engine','ejs')
+  //To use ejs, you have to have ejs installed via npm.
+    //it is not necessary requiring ejs as express automatically does when you
+      set the view engine to ejs.
+    //express automatically assumes that our directories exist in a
+      directory called views.
+    //in order to send a template, we don't use the 'res.send' function 
+      but instead use the 'res.render()' function with the name of the template
+      within the parentheses.
+      //The render function automatically assumes the file is the views file unless 
+        you specify otherwise by passing a file path as a parameter.
+    
+    //it's good to know that the views directory is always set to process.cwd()+'views.js'
+      This means that the point from which you run nodemon is what is set as process.cwd()
+      and therefore running nodemon from a different point results in an error
+      //to circumvent this issue:
+        >you need to set the path for views using app.set()
+        >>>first require path
+        >>>pass the "views" key and as a value, pass "path.join(__dirname, "/<name_of_file_carrying_templates>")
+
+//The express app can render the templates in the views folder instead of sending a result.
+    //This is done using the res.render() function which takes the template name as well as an object carrying the 
+      variables to be rendered in the template. This is a lot like passing props in react.
+    //The logic can be done in the file in which the http server is declared and passed within the square brackets in the
+      render function.
+
+//in order to add css and js files to your templates, create a public file and have app.use point to the 
+  just created public file using the express.static property.
+  //The static property is used to refer to static files like css and other js files
+  //Thereafter, using the static files in your project is just a matter of adding them to your template head(css) or body(js)
+  //interestingly, all public files are served and going to an address with the file name in the browser will actually return
+    the file.

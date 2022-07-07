@@ -1,0 +1,15 @@
+{
+  "name": "templatingexpress",
+  "version": "1.0.0",
+  "description": "going through html templating",
+  "main": "templatingExpress.js",
+  "scripts": {
+    "test": "nodemon templatingExpress.js"
+  },
+  "author": "Leon Omollo",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}

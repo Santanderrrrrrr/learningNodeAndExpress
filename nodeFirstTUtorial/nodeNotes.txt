@@ -1,0 +1,32 @@
+NODE REPL
+//accessed by just typing node into the terminal.
+//read evaluate print loop
+//Document and window does not exist. Use "global"
+//exit by ctrl+c or ".exit"
+
+//typing node along with the file name executes the script within the file.
+//one can access files in different locations using th file paths.
+
+//node has a property called process.argv which is an array.
+//the first element of the array is the path to the executable file of the 
+  node applocation
+//The second element of the array is the path to the current working directory
+//The current working directory can also be accessed through a node property
+  called process.cwd()
+
+//apart from properties such as process.cwd() and process.argv, node has modules such as
+  fs which lets you make files and has multiple other functions. 
+//It is not readilu available in scope, therefore, it must be required. 
+//requiring is done as follows: 
+    const fs = require('fs')
+//one can then use fs' multiple different methods:
+    fs.mkdirSync('createdFile')
+
+
+***********// GLOBALS  - NO WINDOW !!!!
+
+           // __dirname  - path to current directory
+           // __filename - file name
+           // require    - function to use modules (CommonJS)
+           // module     - info about current module (file)
+           // process    - info about env where the program is being executed
